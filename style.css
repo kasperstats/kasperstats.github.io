@@ -1,0 +1,87 @@
+:root {
+	--data-background-color: #f3f3f3;
+	--primary-blue: #002855;
+	--secondary-blue: #1855a3;
+	--accent-color: #d60a2e;
+}
+
+.navbar
+{
+	/*background-color: var(--accent-color);*/
+}
+
+table {
+	border-collapse: collapse;
+	width: 100%;
+	border: 1px solid #ddd;
+}
+
+th, td {
+	text-align: left;
+	padding: 8px;
+}
+
+th {
+	background-color: var(--primary-blue);
+	color: whitesmoke;
+	font-weight: bold;
+	cursor: pointer;
+}
+  
+.table-divider {	 
+	border-left: 1px solid white;
+}
+    
+.text {	
+	font-family: "Calibri";
+	
+}
+
+.text-lg {
+	font-size: 14pt;
+}
+
+.tab
+{
+	font-weight: bold;
+	display: inline-block;
+	padding: 10px 20px;
+	background-color: #fff;	
+	border: 1px solid #ccc;
+	cursor: pointer;
+}
+
+.tab-sm {
+	width: 100px;
+	border-bottom: 0px;
+}
+
+.tab-lg {
+	height: 40px;
+	width: 200px;
+}
+  
+.active {
+	border-bottom: 0px;
+	background-color: var(--primary-blue);
+	color: whitesmoke;
+}
+  
+  
+.dropdown
+{
+	height: 32px;
+	background-color: whitesmoke;
+	
+}
+
+.dropdown-option
+{
+	background-color: whitesmoke;
+}
+
+
+.data-table {
+	background-color: var(--data-background-color);
+	border-top: 0px;
+}

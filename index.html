@@ -1,90 +1,347 @@
 <!DOCTYPE html>
 
 <html>
-	<head>
-		<style>
-		  table {
-			border-collapse: collapse;
-			width: 100%;
-			border: 1px solid #ddd;
-		  }
-		  th, td {
-			text-align: left;
-			padding: 8px;
-		  }
-		  th {
-			background-color: #f2f2f2;
-		  }
-		</style>
-	</head>
+<head>
+<title>Home - KasperStats Baseball</title>
+<link rel="stylesheet" href="style.css" />
+
+</head>
+		
+<body>	
+	<div class="navbar">
+		<h2 class="text" style="margin-top: 2px; margin-bottom: 2px;">KasperStats</h2>				
+		<a class="text text-lg" style="display: inline-block;" href="glossary.html" target="_blank">Glossary of Terms</a>		
+		<a class="text text-lg" style="display: inline-block; margin-left: 60px;" href="https://twitter.com/KasperStats/" target="_blank">Find me on Twitter</a>
+		<a class="text text-lg" style="display: inline-block; margin-left: 60px;" href="acknowledgements.html" target="_blank">Acknowledgements</a>
+	</div>
 	
-	<body>
-		<h2>KasperStats</h2>
-
-		<table>
-		  <thead>
-			<tr>
-				
-			  <!--<th rowspan="2">Offense</th> -->
-			  <th colspan="1"></th>
-			  <th colspan="16">Offense</th>
-			  <th colspan="10">Total</th>
-			</tr>
-			<tr>
-				<th>Player</th>
-				<th>PA</th>
-				<th>AB</th>
-				<th>1B</th>
-				<th>2B</th>
-				<th>3B</th>
-				<th>HR</th>
-				<th>BB</th>
-				<th>HBP</th>
-				<th>AVG</th>
-				<th>OBP</th>
-				<th>SLG</th>
-				<th>OPS</th>
-				<th>OPS+</th>
-				<th>wRC+</th>
+	<br/>
+	<hr/>
+	
+	<div id="tabs">
+		<button class="tab tab-lg" id="playerTab">Player</button>
+		<button class="tab tab-lg" id="teamTab">Team</button>
 					
+		<label class="text" style="display: inline-block; margin-left: 60px; margin-right: 10px;" for="selectYear">Season:</label>
+	  
+		<select id="selectYear" style="width: 60px; height: 40px;" class="dropdown">
+			<option class="dropdown-option" value="2023">2023</option>
+			<option class="dropdown-option" value="2022">2022</option>
+			<option class="dropdown-option" value="2021">2021</option>
+			<option class="dropdown-option" value="2020">2020</option>
+			<option class="dropdown-option" value="2019">2019</option>
+		</select>
+							
+		<i><label class="text" style="display: inline-block; margin-left: 10px; margin-right: 10px;" for="selectYear">Additional seasons will be available soon!</label></i>
+	 	
+		<br/>
+		<br/>
+	</div>		
+	
+	<div style="margin-left: 8px; margin-right: 8px;">		
+		<div id="statTypeTabs">
+			<button class="tab tab-sm" id="hittingTab">Hitting</button>
+			<button class="tab tab-sm" id="pitchingTab" disabled="disabled">Pitching</button>
+			<button class="tab tab-sm" id="fieldingTab" disabled="disabled">Fielding</button>
+		
+			<i><label class="text" style="margin-bottom: 0px; margin-left: 30px; display: inline-block;">Pitching and Fielding will be available soon!</label></i>
+		</div>
 
-				<!--
-				<th>BasesGained</th>
-				<th>BasesGained+</th>
-															
-				<th>fWAR</th>
-				<th>$ Value (season)</th>
-				<th>$ per fWAR</th>
-				<th>MarketValue+</th>
-				-->
-			</tr>
-		  </thead>
+		<table id="player_hitting_table" class="data-table text">		
+			<thead>
+				<tr>
+				  <th colspan="1"></th>
+				  <th class="table-divider" colspan="14"><i>Cumulative Stats</i></th>
+				  <th class="table-divider" colspan="7"><i>Rate Stats</i></th>
+				  <th class="table-divider" colspan="5"><i>Contract Value Stats</i></th>
+				</tr>			
+			
+				<tr>
+					<th>Player</th>
+					<th class="table-divider">PA</th>
+					<th>AB</th>
+					<th>1B</th>
+					<th>2B</th>
+					<th>3B</th>
+					<th>HR</th>
+					<th>Hits</th>
+					<th>RBI</th>					
+					<th>BB</th>
+					<th>IBB</th>
+					<th>HBP</th>				
+					<th>Total Bases</th>
+					<th>Bases Gained</th>
+					<th>RAR</th>
+					
+					<th class="table-divider">AVG</th>
+					<th>OBP</th>
+					<th>SLG</th>
+					<th>OPS</th>
+					<th>Slash+</th>
+					<th>RAR+</th>					
+					<th>BasesGained+</th>
+																
+					<th class="table-divider">Contract $ (season)</th>
+					<th>$ per RAR</th>
+					<th>MarketValue+</th>
+						<th>PositionValue+</th>
+				</tr>
+			</thead>
+				
+			<tbody>
+				<tr>
+					<td>Arson Judge</td>
+					<td>1</td>
+					<td>...</td>
+					<td>...</td>
+					<td>...</td>
+					<td>...</td>
+					<td>...</td>
+					<td>...</td>
+					<td>...</td>
+					<td>...</td>
+					<td>...</td>
+					<td>...</td>
+					<td>...</td>
+					<td>...</td>
+					<td>...</td>
+					<td>...</td>
+					<td>...</td>
+					<td>...</td>
+					<td>...</td>
+					<td>...</td>
+					<td>...</td>
+					<td>...</td>
+					<td>...</td>
+					<td>...</td>
+					<td>...</td>
+				</tr>
+				<tr>
+					<td>Slugbert McReplacement</td>
+					<td>1</td>
+					<td>...</td>
+					<td>...</td>
+					<td>...</td>
+					<td>...</td>
+					<td>...</td>
+					<td>...</td>
+					<td>...</td>
+					<td>...</td>
+					<td>...</td>
+					<td>...</td>
+					<td>...</td>
+					<td>...</td>
+					<td>...</td>
+					<td>...</td>
+					<td>...</td>
+					<td>...</td>
+					<td>...</td>
+					<td>...</td>
+					<td>...</td>
+					<td>...</td>
+					<td>...</td>
+					<td>...</td>
+					<td>...</td>
+				</tr>			
+			</tbody>
+		</table>	
+		
+		<!--
+		<table id="player_pitching_table" class="data-table text">		
+			<thead>
+				<tr>
+				  <th colspan="1"></th>
+				</tr>			
+			
+				<tr>
+					<th>Player</th>
+				</tr>
+			</thead>
+				
+			<tbody>
+				<tr>
+					<td>...</td>
+				</tr>			
+			</tbody>
+		</table>		
+
+		<table id="player_fielding_table" class="data-table text">		
+			<thead>
+				<tr>
+				  <th colspan="1"></th>
+				</tr>			
+			
+				<tr>	
+					<th>Player</th>
+				</tr>
+			</thead>
+				
+			<tbody>
+				<tr>					
+					<td>...</td>
+				</tr>			
+			</tbody>
+		</table>		
+		-->
+		
+		<table id="team_hitting_table" class="data-table text">		
+			<thead>
+				<tr>
+				  <th colspan="1"></th>
+				  <th class="table-divider" colspan="14"><i>Cumulative Stats</i></th>
+				  <th class="table-divider" colspan="6"><i>Rate Stats</i></th>
+				  <th colspan="5"><i>Contract Value Stats</i></th>
+				</tr>			
+			
+				<tr>
+					<th>Team</th>
+					<th class="table-divider" >PA</th>
+					<th>AB</th>
+					<th>1B</th>
+					<th>2B</th>
+					<th>3B</th>
+					<th>HR</th>
+					<th>Hits</th>
+					<th>BB</th>
+					<th>IBB</th>
+					<th>HBP</th>				
+					<th>Total Bases</th>
+					<th>Bases Gained</th>
+					<th>Runs Scored</th>					
+					<th>RAR</th>
+					
+					<th class="table-divider" >AVG</th>
+					<th>OBP</th>
+					<th>SLG</th>
+					<th>OPS</th>
+					<th>Slash+</th>
+					<th>RAR+</th>
+					<th>Hits per Run</th>
+					
+					<th>BasesGained+</th>
+																
+					<th>Contract $ (season)</th>
+					<th>$ per RAR</th>
+					<th>MarketValue+</th>
+					<th>PositionValue+</th>
+				</tr>
+			</thead>
+				
+			<tbody>
+				<tr>
+					<td>Yankees</td>
+				</tr>			
+			</tbody>
+		</table>	
+		
+		<!--
+		<table id="team_pitching_table" class="data-table text">		
+			<thead>
+				<tr>
+				  <th colspan="1"></th>
+				</tr>			
+			
+				<tr>
+					<th>Team</td>
+				</tr>
+			</thead>
+				
+			<tbody>
+				<tr>
+					<td>...</td>
+				</tr>			
+			</tbody>
+		</table>			
+
+		<table id="team_fielding_table" class="data-table text">		
+			<thead>
+				<tr>
+				  <th colspan="1"></th>
+				</tr>			
+			
+				<tr>
+					<th>Team</th>
+				</tr>
+			</thead>
+				
+			<tbody>
+				<tr>
+					<td>...</td>
+				</tr>			
+			</tbody>
+		</table>	
+	</div>
+	-->
+		
+	<script>
+		const type_tabs = document.querySelectorAll('.tab-sm');
+	  
+		type_tabs.forEach(tab => 
+		{
+			tab.addEventListener('click', () => 
+			{
+				// Remove 'active' class from all type_tabs
+				type_tabs.forEach(tab => 
+				{
+					tab.classList.remove('active');
+				});		  
+				
+				// Add 'active' class to the clicked tab
+				tab.classList.add('active');					
+				displayCorrectTable();
+			});
+		});		 		 
+	  
+		const team_tabs = document.querySelectorAll('.tab-lg');
+	  
+		team_tabs.forEach(tab => 
+		{
+			tab.addEventListener('click', () => 
+			{
+				// Remove 'active' class from all tabs
+				team_tabs.forEach(tab => 
+				{
+					tab.classList.remove('active');
+				});
 		  
-		  <tbody>
-			<tr>
-			  <td>...</td>
-			  <td>...</td>
-			  <td>...</td>
-			  <td>...</td>
-			  <td>...</td>
-			  <td>...</td>
-			  <td>...</td>
-			  <td>...</td>
-			  <td>...</td>
-			  <td>...</td>
-			  <td>...</td>
-			  <td>...</td>
-			  <td>...</td>
-			  <td>...</td>
-			  <td>...</td>
-			  <td>...</td>
-			  <td>...</td>
-			  <td>...</td>
-			  <td>...</td>
-			  <td>...</td>
-			</tr>
-			<!-- Add more rows as needed -->
-		  </tbody>
-		</table>
-	</body>
+				// Add 'active' class to the clicked tab
+				tab.classList.add('active');
+				displayCorrectTable();
+			});
+		});		 	
+		team_tabs[0].click();
+		type_tabs[0].click();	
+				
+		function displayCorrectTable()
+		{
+			var tables = document.getElementsByClassName("data-table");
+			
+			Array.from(tables).forEach(table =>
+			{
+				table.style.display = "none";
+			});	
+			
+			var teamTabs = document.querySelectorAll('.tab-lg.active');					
+			var typeTabs = document.querySelectorAll('.tab-sm.active');
+			
+			var playerOrTeam = "player";
+			var statType = "hitting";
+			
+			if (teamTabs.length > 0)
+			{
+				playerOrTeam = teamTabs[0].textContent.toLowerCase();
+			}
+						
+			if (typeTabs.length > 0)
+			{
+				statType = typeTabs[0].textContent.toLowerCase();	
+			}
+					
+			var tableToShow = playerOrTeam + "_" + statType + "_table";
+			
+			var correctTable = document.getElementById(tableToShow);
+			correctTable.style.display = "block";
+		}
+	</script>		
+</body>
 </html>
