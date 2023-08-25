@@ -24,6 +24,12 @@ function FormatRateStat(num)
 
 function Round(num)
 {
-	return num.toFixed(3);
+	return Round(num, 3);
+}
+		
+		
+function Round(num, places)
+{
+	return num.toFixed(places);
 }
 		

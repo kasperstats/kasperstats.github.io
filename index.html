@@ -251,23 +251,22 @@
 			<thead>
 				<tr>
 				  <th colspan="1"></th>
-				  <th class="table-divider" colspan="14"><i>Contract Value Stats</i></th>
+				  <th class="table-divider" colspan="6"><i>Overall Performance</i></th>
+				  <th class="table-divider" colspan="6"><i>Market Value</i></th>
 				</tr>			
 			
 				<tr>
 					<th>Team</th>
-					<th>Wins</th>	
+					<th class="table-divider">Wins</th>	
 					<th>Losses</th>	
 					<th>Win %</th>	
 					<th>Runs</th>	
 					<th>Runs Allowed</th>	
 					<th>Run Differential</th>	
 					
-					<th>Total Payroll ($M)</th>
+					<th class="table-divider">Total Payroll ($M)</th>
 					<th>$ per Run</th>
 					<th>$ per Win</th>
-					
-					
 					
 					<th>MarketValue+</th>
 					<th>PositionValue+</th>
@@ -501,28 +500,11 @@
 					row.insertCell().textContent = team.RunsScored;
 					row.insertCell().textContent = team.RunsAllowed;
 					row.insertCell().textContent = team.GetRunDifferential();
-					row.insertCell().textContent = "$" + Round(team.PayrollInMillions) + "M";
-					row.insertCell().textContent = "$" + Round(team.GetDollarsPerRun()) + "M";
-					row.insertCell().textContent = "$" + Round(team.GetDollarsPerWin()) + "M";
+					row.insertCell().textContent = "$" + Round(team.PayrollInMillions, 2) + "M";
+					row.insertCell().textContent = "$" + Round(team.GetDollarsPerRun(), 2) + "M";
+					row.insertCell().textContent = "$" + Round(team.GetDollarsPerWin(), 2) + "M";
 					
-					row.insertCell().textContent = team.Triples;
-					row.insertCell().textContent = team.HR;
-					row.insertCell().textContent = team.GetHits();
-					row.insertCell().textContent = team.BB;
-					row.insertCell().textContent = team.IBB;
-					row.insertCell().textContent = team.HBP;
-					row.insertCell().textContent = team.GetTotalBases();
-					row.insertCell().textContent = team.BasesGained;
-					row.insertCell().textContent = team.Runs;
-
-					row.insertCell().textContent = team.RAR;
-					row.insertCell().textContent = FormatRateStat(team.GetAVG());
-					row.insertCell().textContent = FormatRateStat(team.GetOBP());
-					row.insertCell().textContent = FormatRateStat(team.GetSLG());
-					row.insertCell().textContent = FormatRateStat(team.GetOPS());
-								
-					row.insertCell().textContent = team.SlashPlus;
-					row.insertCell().textContent = Round(team.GetHitsPerRun());
+				
 					// Add more cells for other properties if needed
 					
 					count++;
