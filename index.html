@@ -9,44 +9,65 @@
 		
 <body>	
 	<div class="navbar">
-		<h2 class="text" style="margin-top: 2px; margin-bottom: 2px;">KasperStats</h2>				
-		<a class="text text-lg" style="display: inline-block;" href="glossary.html" target="_blank">Glossary of Terms</a>		
-		<a class="text text-lg" style="display: inline-block; margin-left: 60px;" href="https://twitter.com/KasperStats/" target="_blank">Find me on Twitter</a>
-		<a class="text text-lg" style="display: inline-block; margin-left: 60px;" href="acknowledgements.html" target="_blank">Acknowledgements</a>
+		<img style="width: 40px; height: 40px;" src="profile.jpg"></img>
+		<h1 class="text" style="margin-left: 10px; vertical-align: top; height: 40px; text-align: center; display: inline-block; margin-top: 0px; margin-bottom: 0px;">
+			KasperStats
+		</h1>				
+		
+		<a class="text text-xl navbar-item" href="index.html">Home</a>		
+		<a class="text text-xl navbar-item" href="glossary.html" target="_blank">Glossary of Terms</a>		
+		<a class="text text-xl navbar-item" href="https://twitter.com/KasperStats/" target="_blank">Find me on Twitter</a>
+		<a class="text text-xl navbar-item" href="acknowledgements.html" target="_blank">Acknowledgements</a>		
+		<br/>
+		
+		<h4 class="text text-md" style="text-align: center; display: inline-block; margin-top: 2px; margin-bottom: 2px;">
+			Baseball analysis tools
+		</h4>	
 	</div>
 	
-	<br/>
 	<hr/>
+	<br>
 	
 	<div id="tabs">
-		<button class="tab tab-lg" id="playerTab">Player</button>
+		<button class="tab tab-lg" id="playerTab" disabled="disabled">Player</button>
 		<button class="tab tab-lg" id="teamTab">Team</button>
 					
-		<label class="text" style="display: inline-block; margin-left: 60px; margin-right: 10px;" for="selectYear">Season:</label>
+		<label class="text text-md" style="display: inline-block; margin-left: 60px; margin-right: 10px;" for="selectYear">Season:</label>
 	  
 		<select id="selectYear" style="width: 60px; height: 40px;" class="dropdown">
 			<option class="dropdown-option" value="2023">2023</option>
+			<!--
 			<option class="dropdown-option" value="2022">2022</option>
 			<option class="dropdown-option" value="2021">2021</option>
 			<option class="dropdown-option" value="2020">2020</option>
 			<option class="dropdown-option" value="2019">2019</option>
+			-->
 		</select>
 							
-		<i><label class="text" style="display: inline-block; margin-left: 10px; margin-right: 10px;" for="selectYear">Additional seasons will be available soon!</label></i>
+		<i><label class="text" style="display: inline-block; margin-left: 10px; margin-right: 10px;" for="selectYear">Individual player stats, Pitching and Fielding metrics, and additional seasons will be available soon!</label></i>
 	 	
 		<br/>
 		<br/>
 	</div>		
 	
-	<div style="margin-left: 8px; margin-right: 8px;">		
+	<div class="content-view">
 		<div id="statTypeTabs">
 			<button class="tab tab-sm" id="hittingTab">Hitting</button>
 			<button class="tab tab-sm" id="pitchingTab" disabled="disabled">Pitching</button>
-			<button class="tab tab-sm" id="fieldingTab" disabled="disabled">Fielding</button>
-		
-			<i><label class="text" style="margin-bottom: 0px; margin-left: 30px; display: inline-block;">Pitching and Fielding will be available soon!</label></i>
+			<button class="tab tab-sm" id="fieldingTab" disabled="disabled">Fielding</button>		
+			<button class="tab tab-sm" id="contractTab">Value</button>		
+				
+			<!--				
+			<label class="text text-md" style="display: inline-block; margin-left: 146px; margin-right: 10px;" for="selectYear">Settings:</label>
+			-->
+			<!--
+		  	<p style="display: inline-block;" class="text text-sm">			
+				<input type="checkbox">Show heat map:</input>
+			</p>	
+			-->
 		</div>
 
+		<!--
 		<table id="player_hitting_table" class="data-table text">		
 			<thead>
 				<tr>
@@ -145,6 +166,7 @@
 				</tr>			
 			</tbody>
 		</table>	
+		-->
 		
 		<!--
 		<table id="player_pitching_table" class="data-table text">		
@@ -184,13 +206,13 @@
 		</table>		
 		-->
 		
-		<table id="team_hitting_table" class="data-table text">		
+		<table id="team_hitting_table" class="data-table text text-sm">		
 			<thead>
 				<tr>
 				  <th colspan="1"></th>
 				  <th class="table-divider" colspan="14"><i>Cumulative Stats</i></th>
 				  <th class="table-divider" colspan="6"><i>Rate Stats</i></th>
-				  <th colspan="5"><i>Contract Value Stats</i></th>
+				  <th class="table-divider" colspan="5"><i>Contract Value Stats</i></th>
 				</tr>			
 			
 				<tr>
@@ -207,30 +229,52 @@
 					<th>HBP</th>				
 					<th>Total Bases</th>
 					<th>Bases Gained</th>
-					<th>Runs Scored</th>					
+					<th>Runs</th>					
 					<th>RAR</th>
 					
-					<th class="table-divider" >AVG</th>
+					<th class="table-divider">AVG</th>
 					<th>OBP</th>
 					<th>SLG</th>
 					<th>OPS</th>
+					<th>RunEfficiency+</th>
 					<th>Slash+</th>
-					<th>RAR+</th>
-					<th>Hits per Run</th>
-					
 					<th>BasesGained+</th>
-																
-					<th>Contract $ (season)</th>
-					<th>$ per RAR</th>
+					<th>Hits per Run</th>														
+				</tr>
+			</thead>
+				
+			<tbody>
+			</tbody>
+		</table>	
+
+		<table id="team_value_table" class="data-table text text-sm">		
+			<thead>
+				<tr>
+				  <th colspan="1"></th>
+				  <th class="table-divider" colspan="14"><i>Contract Value Stats</i></th>
+				</tr>			
+			
+				<tr>
+					<th>Team</th>
+					<th>Wins</th>	
+					<th>Losses</th>	
+					<th>Win %</th>	
+					<th>Runs</th>	
+					<th>Runs Allowed</th>	
+					<th>Run Differential</th>	
+					
+					<th>Total Payroll ($M)</th>
+					<th>$ per Run</th>
+					<th>$ per Win</th>
+					
+					
+					
 					<th>MarketValue+</th>
 					<th>PositionValue+</th>
 				</tr>
 			</thead>
 				
 			<tbody>
-				<tr>
-					<td>Yankees</td>
-				</tr>			
 			</tbody>
 		</table>	
 		
@@ -272,47 +316,75 @@
 		</table>	
 	</div>
 	-->
+	
+	<script src="Team.js" type="text/javascript"></script>
+	<script src="KasperMath.js" type="text/javascript"></script>
+	
+	<script>	
+	
+		function GenerateColorScale(tableName)
+		{
+			var correctTable = document.getElementById(tableName);									
+			var cellCount = correctTable.rows[1].cells.length;
+			
+			const rowOffset = 2;
+			var rowCount = correctTable.rows.length;
+			//alert(cellCount);
+			
+			var max = "#ffeeff";
+			var min = "#00cc00";
+			
+			//var blackText
+			
+			
+			
+			var valueRange = 
+			["#1a5bc4", "#3269c2", "#4c79c2", "#7ca1de", "#9dbaeb", 
+			"#f2f5fa", 
+			"#f2dada", "#e6b8b8", "#cc7272", "#c25555", "#b52f2f" ];
+							
+			for (var i = 1; i < cellCount; i++)
+			{
+				var values = [];
+				var total = 0;
+										
+				for (var row = rowOffset; row < rowCount; row++)				
+				{
+					var cell = correctTable.rows[row].cells[i];
+					var floatVal = parseFloat(cell.textContent);								
+					values.push(floatVal);						
+					total = total + floatVal;
+				}		
+				
+				var min = Math.min(...values);		
+				var max = Math.max(...values);
+				var avg = parseFloat(total / 30);
+
+				var gap = (max - min) / parseFloat("10.0");
+				//alert(min);
+				
+				for (var r = rowOffset; r < rowCount; r++)				
+				{				
+					var cell2 = correctTable.rows[r].cells[i];
+					var floatVal2 = parseFloat(cell2.textContent);	
+															
+					var index = Math.round((floatVal2 - min) / gap);
+					console.log(index);
+					cell2.style.backgroundColor = valueRange[index];	
 		
-	<script>
-		const type_tabs = document.querySelectorAll('.tab-sm');
-	  
-		type_tabs.forEach(tab => 
-		{
-			tab.addEventListener('click', () => 
-			{
-				// Remove 'active' class from all type_tabs
-				type_tabs.forEach(tab => 
-				{
-					tab.classList.remove('active');
-				});		  
-				
-				// Add 'active' class to the clicked tab
-				tab.classList.add('active');					
-				displayCorrectTable();
-			});
-		});		 		 
-	  
-		const team_tabs = document.querySelectorAll('.tab-lg');
-	  
-		team_tabs.forEach(tab => 
-		{
-			tab.addEventListener('click', () => 
-			{
-				// Remove 'active' class from all tabs
-				team_tabs.forEach(tab => 
-				{
-					tab.classList.remove('active');
-				});
-		  
-				// Add 'active' class to the clicked tab
-				tab.classList.add('active');
-				displayCorrectTable();
-			});
-		});		 	
-		team_tabs[0].click();
-		type_tabs[0].click();	
-				
-		function displayCorrectTable()
+					if (index < 3 || index > 7)
+					{
+						cell2.style.color = "whitesmoke";		
+					}
+					else
+					{
+						cell2.style.color = "black";	
+					}							
+				}						
+			}				
+		}
+	
+		function DisplayCorrectTable()
 		{
 			var tables = document.getElementsByClassName("data-table");
 			
@@ -324,7 +396,7 @@
 			var teamTabs = document.querySelectorAll('.tab-lg.active');					
 			var typeTabs = document.querySelectorAll('.tab-sm.active');
 			
-			var playerOrTeam = "player";
+			var playerOrTeam = "team";
 			var statType = "hitting";
 			
 			if (teamTabs.length > 0)
@@ -340,8 +412,162 @@
 			var tableToShow = playerOrTeam + "_" + statType + "_table";
 			
 			var correctTable = document.getElementById(tableToShow);
-			correctTable.style.display = "block";
+			correctTable.style.display = "block";						
+			
+			// Clear the table if necessary.
+			var rowCount = correctTable.rows.length;			
+			if (rowCount > 0)
+			{			
+				// We keep i > ONE because it lets us keep the header-row.
+				for (let i = rowCount - 1; i > 1; i--) 
+				{
+					correctTable.deleteRow(i);
+				}
+			}
+			
+			if (tableToShow == "team_hitting_table")
+			{
+				for (const team of MLB_Teams)
+				{
+					const row = correctTable.insertRow();
+					
+					team.PA = 220;
+					team.AB = 200;
+					team.Singles = 50;
+					team.Doubles = 25;
+					team.Triples = 10;
+					team.HR = 40;
+					team.SF = 2;
+					team.BB = 8;
+					team.IBB = 1;
+					team.Runs = 120;
+					team.HBP = 0;
+					
+					row.insertCell().textContent = team.GetFullName();					
+					row.insertCell().textContent = team.PA;
+					row.insertCell().textContent = team.AB;
+					row.insertCell().textContent = team.Singles;
+					row.insertCell().textContent = team.Doubles;
+					row.insertCell().textContent = team.Triples;
+					row.insertCell().textContent = team.HR;
+					row.insertCell().textContent = team.GetHits();
+					row.insertCell().textContent = team.BB;
+					row.insertCell().textContent = team.IBB;
+					row.insertCell().textContent = team.HBP;
+					row.insertCell().textContent = team.GetTotalBases();
+					row.insertCell().textContent = team.BasesGained;
+					row.insertCell().textContent = team.Runs;
+
+					row.insertCell().textContent = team.RAR;
+					row.insertCell().textContent = FormatRateStat(team.GetAVG());
+					row.insertCell().textContent = FormatRateStat(team.GetOBP());
+					row.insertCell().textContent = FormatRateStat(team.GetSLG());
+					row.insertCell().textContent = FormatRateStat(team.GetOPS());
+								
+					row.insertCell().textContent = team.SlashPlus;
+					row.insertCell().textContent = Round(team.GetHitsPerRun());
+					// Add more cells for other properties if needed
+				}
+			}
+				
+			else if (tableToShow == "team_value_table")
+			{
+				var count = 0;
+				
+				for (const team of MLB_Teams)
+				{
+					const row = correctTable.insertRow();
+	
+					team.PA = 220 + (5 * count);
+					team.AB = 200 + (5 * count);
+					team.Singles = 50 + (5 * count);
+					team.Doubles = 25 + (5 * count);
+					team.Triples = 10 + (5 * count);
+					team.HR = 40 + (5 * count);
+					team.SF = 2 + (5 * count);
+					team.BB = 8 + (5 * count);
+					team.IBB = 1 + (5 * count);
+					team.Runs = 120 + (5 * count);
+					team.HBP = 0 + (5 * count);
+					team.RunsScored = 800 + (5 * count);
+					team.PayrollInMillions = 250.6 + (5 * count);
+					team.Wins = 20 + (2 * count);
+					team.Losses = 0 + (2 * count);								
+									
+					row.insertCell().textContent = team.GetFullName();								
+					row.insertCell().textContent = team.Wins;
+					row.insertCell().textContent = team.Losses;
+					row.insertCell().textContent = Round(team.GetWinPercentage());
+					row.insertCell().textContent = team.RunsScored;
+					row.insertCell().textContent = team.RunsAllowed;
+					row.insertCell().textContent = team.GetRunDifferential();
+					row.insertCell().textContent = "$" + Round(team.PayrollInMillions) + "M";
+					row.insertCell().textContent = "$" + Round(team.GetDollarsPerRun()) + "M";
+					row.insertCell().textContent = "$" + Round(team.GetDollarsPerWin()) + "M";
+					
+					row.insertCell().textContent = team.Triples;
+					row.insertCell().textContent = team.HR;
+					row.insertCell().textContent = team.GetHits();
+					row.insertCell().textContent = team.BB;
+					row.insertCell().textContent = team.IBB;
+					row.insertCell().textContent = team.HBP;
+					row.insertCell().textContent = team.GetTotalBases();
+					row.insertCell().textContent = team.BasesGained;
+					row.insertCell().textContent = team.Runs;
+
+					row.insertCell().textContent = team.RAR;
+					row.insertCell().textContent = FormatRateStat(team.GetAVG());
+					row.insertCell().textContent = FormatRateStat(team.GetOBP());
+					row.insertCell().textContent = FormatRateStat(team.GetSLG());
+					row.insertCell().textContent = FormatRateStat(team.GetOPS());
+								
+					row.insertCell().textContent = team.SlashPlus;
+					row.insertCell().textContent = Round(team.GetHitsPerRun());
+					// Add more cells for other properties if needed
+					
+					count++;
+				}
+			}
+			
+			GenerateColorScale(tableToShow);
 		}
+		
+		const type_tabs = document.querySelectorAll('.tab-sm');	  
+		type_tabs.forEach(tab => 
+		{
+			tab.addEventListener('click', () => 
+			{
+				// Remove 'active' class from all type_tabs
+				type_tabs.forEach(tab => 
+				{
+					tab.classList.remove('active');
+				});		  
+				
+				// Add 'active' class to the clicked tab
+				tab.classList.add('active');					
+				DisplayCorrectTable();
+			});
+		});		 		 
+	  
+		const team_tabs = document.querySelectorAll('.tab-lg');	  
+		team_tabs.forEach(tab => 
+		{
+			tab.addEventListener('click', () => 
+			{
+				// Remove 'active' class from all tabs
+				team_tabs.forEach(tab => 
+				{
+					tab.classList.remove('active');
+				});
+		  
+				// Add 'active' class to the clicked tab
+				tab.classList.add('active');
+				DisplayCorrectTable();
+			});
+		});		 	
+		team_tabs[1].click();
+		type_tabs[0].click();	
+				
 	</script>		
 </body>
 </html>
