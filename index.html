@@ -56,15 +56,12 @@
 			<button class="tab tab-sm" id="pitchingTab" disabled="disabled">Pitching</button>
 			<button class="tab tab-sm" id="fieldingTab" disabled="disabled">Fielding</button>		
 			<button class="tab tab-sm" id="contractTab">Value</button>		
-				
-			<!--				
-			<label class="text text-md" style="display: inline-block; margin-left: 146px; margin-right: 10px;" for="selectYear">Settings:</label>
-			-->
-			<!--
-		  	<p style="display: inline-block;" class="text text-sm">			
+									
+			<label class="text text-md" style="display: inline-block; margin-left: 40px; margin-right: 10px;" for="heatMap">Settings:</label>
+			
+		  	<i id="heatMap" style="display: inline-block;" class="text text-md">			
 				<input type="checkbox">Show heat map:</input>
-			</p>	
-			-->
+			</i>		
 		</div>
 
 		<!--
@@ -321,6 +318,14 @@
 	
 	<script>	
 	
+			
+		function StripSymbols(str)
+		{			
+			let pattern = /(\$|M)/;
+			let newString = str.replace(pattern, "");
+			return parseFloat(newString);			
+		}
+		
 		function GenerateColorScale(tableName)
 		{
 			var correctTable = document.getElementById(tableName);									
@@ -335,22 +340,33 @@
 			
 			//var blackText
 			
-			
+	
 			
 			var valueRange = 
 			["#1a5bc4", "#3269c2", "#4c79c2", "#7ca1de", "#9dbaeb", 
 			"#f2f5fa", 
 			"#f2dada", "#e6b8b8", "#cc7272", "#c25555", "#b52f2f" ];
-							
+			
+			
+			// Create an empty dictionary
+			var LookUpIsHighValueGood = {};			
+			LookUpIsHighValueGood["OPS"] = true;
+			LookUpIsHighValueGood["$ per WAR"] = false;
+			LookUpIsHighValueGood["$ per RUN"] = false;
+			LookUpIsHighValueGood["Total Payroll ($M)"] = true;
+
 			for (var i = 1; i < cellCount; i++)
 			{
+				var statName = correctTable.rows[1].cells[i].textContent;
+				var isHighValueGood = LookUpIsHighValueGood[statName];				
+			
 				var values = [];
 				var total = 0;
 										
 				for (var row = rowOffset; row < rowCount; row++)				
 				{
 					var cell = correctTable.rows[row].cells[i];
-					var floatVal = parseFloat(cell.textContent);								
+					var floatVal = StripSymbols(cell.textContent);								
 					values.push(floatVal);						
 					total = total + floatVal;
 				}		
@@ -360,15 +376,20 @@
 				var avg = parseFloat(total / 30);
 
 				var gap = (max - min) / parseFloat("10.0");
-				//alert(min);
 				
 				for (var r = rowOffset; r < rowCount; r++)				
 				{				
 					var cell2 = correctTable.rows[r].cells[i];
-					var floatVal2 = parseFloat(cell2.textContent);	
+					var floatVal2 = StripSymbols(cell2.textContent);	
 															
 					var index = Math.round((floatVal2 - min) / gap);
-					console.log(index);
+					
+					// Invert the index.
+					if (!isHighValueGood)
+					{
+						index = 10 - index;
+					}
+					
 					cell2.style.backgroundColor = valueRange[index];	
 		
 					if (index < 3 || index > 7)
@@ -426,21 +447,30 @@
 			
 			if (tableToShow == "team_hitting_table")
 			{
+				var count = 0;
+				
 				for (const team of MLB_Teams)
 				{
 					const row = correctTable.insertRow();
 					
-					team.PA = 220;
-					team.AB = 200;
-					team.Singles = 50;
-					team.Doubles = 25;
-					team.Triples = 10;
-					team.HR = 40;
-					team.SF = 2;
-					team.BB = 8;
-					team.IBB = 1;
-					team.Runs = 120;
-					team.HBP = 0;
+					team.PA = 220 + (5 * count);
+					team.AB = 200 + (5 * count);
+					team.Singles = 50 + (5 * count);
+					team.Doubles = 25 + (5 * count);
+					team.Triples = 10 + (5 * count);
+					team.HR = 40 + (5 * count);
+					team.SF = 2 + (5 * count);
+					team.BasesGained = 100 + (12 * count);
+					team.BB = 8 + (5 * count);
+					team.IBB = 1 + (5 * count);
+					team.Runs = 120 + (5 * count);
+					team.HBP = 0 + (5 * count);
+					team.RunsScored = 800 + (5 * count);
+					team.PayrollInMillions = 250.6 + (5 * count);
+					team.Wins = 20 + (2 * count);
+					team.Losses = 0 + (2 * count);		
+				
+					
 					
 					row.insertCell().textContent = team.GetFullName();					
 					row.insertCell().textContent = team.PA;
@@ -462,10 +492,13 @@
 					row.insertCell().textContent = FormatRateStat(team.GetOBP());
 					row.insertCell().textContent = FormatRateStat(team.GetSLG());
 					row.insertCell().textContent = FormatRateStat(team.GetOPS());
+					
 								
+					row.insertCell().textContent = team.GetRunEfficiencyPlus();
 					row.insertCell().textContent = team.SlashPlus;
-					row.insertCell().textContent = Round(team.GetHitsPerRun());
 					// Add more cells for other properties if needed
+					
+					count++;
 				}
 			}
 				
@@ -483,6 +516,7 @@
 					team.Doubles = 25 + (5 * count);
 					team.Triples = 10 + (5 * count);
 					team.HR = 40 + (5 * count);
+					team.BasesGained = 100 + (12 * count);
 					team.SF = 2 + (5 * count);
 					team.BB = 8 + (5 * count);
 					team.IBB = 1 + (5 * count);

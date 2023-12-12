@@ -38,7 +38,11 @@ class Team
 	GetDollarsPerWin() { return this.PayrollInMillions / this.Wins; }
 	GetWinPercentage() { return this.Wins / (this.Wins + this.Losses); }
 	GetRunDifferential() { return this.RunsScored - this.RunsAllowed; }
+	GetRunEfficiencyPlus() { return Round(((this.RunsScored * this.RunsScored) / this.GetHits()) * 100, 1); }
 		
+		
+	
+	
 	constructor(area, name, code)
 	{
 		this.Area = area;
@@ -46,6 +50,8 @@ class Team
 		this.Code = code;	
 	}
 }
+
+
 
 const MLB_Teams = 
 [
